@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 from flask_login import LoginManager
 # from .database import init_engine, init_db, db_session
 from .models import User
@@ -16,6 +16,10 @@ def create_app(db_uri='any'):
     app = Flask(__name__)
     app.config.from_object('app.default_config')
     # app.config.from_pyfile(os.path.join(app.instance_path, 'config.py'))
+
+    @app.route('/')
+    def principal():
+        return redirect(url_for('main.home'))
 
     app.register_blueprint(main_app)
 

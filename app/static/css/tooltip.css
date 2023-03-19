@@ -23,7 +23,7 @@
     visibility: visible;
   }
 
-  #top {
+  .t-top {
     top: -40px;
     left: -50%;
   }

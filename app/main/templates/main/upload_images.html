@@ -79,13 +79,88 @@
             transform: scale(1.5);
             color: white;
         }
+
+        .sections {
+            max-width: 960px;
+        }
     </style>
 
     <style>
+        .div-content2 {
+            border-radius: 1em;
+            padding: 0.75rem;
+            margin: 0.75rem;
+            border: 1px solid #fff;
+            max-width: 960px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            align-items: start;
+        }
 
+        .images {
+            max-width: fit-content;
+            max-height: 300px;
+            border-radius: 0.25rem;
+        }
 
+        .image-container {
+            text-align: center;
+            margin-top: 0.5rem;
+            margin-bottom: 0.25rem;
+            background-color: black;
+        }
 
+        .element-container {
+            text-align: center;
+            border-radius: 0.5rem;
+            border: 1px solid white;
+            background-color: black;
+            margin: 1rem;
+            min-height: 380px;
+        }
 
+        /*Contenedor de imagenes */
+        .image-box {
+            position: relative;
+            width: 100%;
+            max-width: 240px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .image-box img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-box .buttons-image {
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            background-color: transparent;
+            font-size: 18px;
+            padding: 6px 12px;
+            border: none;
+            text-align: center;
+        }
+
+        .btn-image {
+            background-color: rgb(7, 7, 7);
+            border: 2px solid;
+            border-radius: 4px;
+            border-color: rgb(7, 7, 7);
+            cursor: pointer;
+            color: white;
+        }
+
+        .btn-image:hover {
+            background-color: black;
+            transform: scale(1.2);
+        }
     </style>
 </head>
 
@@ -93,14 +168,145 @@
     <section name="upload" class="center-content">
         <div class="div-content">
             <input type="text" id="link-img" name="link-img" placeholder="Image link" class="custom-input text-font">
-            <button type="submit" class="button-input" id="removeinput" data-toggle="tooltip" data-placement="bottom"  data-html="true" title="<b>Remove</b>"><i class="fa fa-times icon-button"></i></button>
-            <button type="submit" class="button-input" id="addlink" data-toggle="tooltip" data-placement="bottom"  data-html="true" title="<b>Add</b>"><i class="fa fa-plus-circle icon-button"></i></button>
+            <button type="submit" class="button-input" id="removeinput" data-toggle="tooltip" data-placement="bottom"
+                data-html="true" title="<b>Remove</b>"><i class="fa fa-times icon-button"></i></button>
+            <button type="submit" class="button-input" id="addlink" data-toggle="tooltip" data-placement="bottom"
+                data-html="true" title="<b>Add</b>"><i class="fa fa-plus-circle icon-button"></i></button>
         </div>
     </section>
-    <section name="resultado">
+
+    <section name="resultado" class="center-content">
+        <div class="div-content2">
+            <article class="element-container mt-1 ">
+                <header class="p-1">
+                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
+                </header>
+                <main class="image-container">
+                    <div class="image-box">
+                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458523388-0896218137-ScreenShot2016-03-21at6.51.45AM.png"
+                            alt="img-link" class="images">
+                        <span class="buttons-image">
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></button>
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
+                                    aria-hidden="true"></i></button>
+                        </span>
+
+                    </div>
+
+                </main>
+            </article>
+            <article class="element-container mt-1 ">
+                <header class="p-1">
+                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
+                </header>
+                <main class="image-container">
+                    <div class="image-box">
+                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458523388-0896218137-ScreenShot2016-03-21at6.51.45AM.png"
+                            alt="img-link" class="images">
+                        <span class="buttons-image">
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></button>
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
+                                    aria-hidden="true"></i></button>
+                        </span>
+
+                    </div>
+
+                </main>
+            </article>
+            <article class="element-container mt-1 ">
+                <header class="p-1">
+                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
+                </header>
+                <main class="image-container">
+                    <div class="image-box">
+                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458523388-0896218137-ScreenShot2016-03-21at6.51.45AM.png"
+                            alt="img-link" class="images">
+                        <span class="buttons-image">
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></button>
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
+                                    aria-hidden="true"></i></button>
+                        </span>
+
+                    </div>
+
+                </main>
+            </article>
+            <article class="element-container mt-1 ">
+                <header class="p-1">
+                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
+                </header>
+                <main class="image-container">
+                    <div class="image-box">
+                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458522826-a9ddd28469-ScreenShot2016-03-21at6.40.27AM.png"
+                            alt="img-link" class="images">
+                        <span class="buttons-image">
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></button>
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
+                                    aria-hidden="true"></i></button>
+                        </span>
+
+                    </div>
+
+                </main>
+            </article>
+            <article class="element-container mt-1 ">
+                <header class="p-1">
+                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
+                </header>
+                <main class="image-container">
+                    <div class="image-box">
+                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458523388-0896218137-ScreenShot2016-03-21at6.51.45AM.png"
+                            alt="img-link" class="images">
+                        <span class="buttons-image">
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></button>
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
+                                    aria-hidden="true"></i></button>
+                        </span>
+
+                    </div>
+
+                </main>
+            </article>
+            <article class="element-container mt-1 ">
+                <header class="p-1">
+                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
+                </header>
+                <main class="image-container">
+                    <div class="image-box">
+                        <img src="https://i.ytimg.com/vi/cpfdmtPWdj0/maxresdefault.jpg"
+                            alt="img-link" class="images">
+                        <span class="buttons-image">
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></button>
+                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
+                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
+                                    aria-hidden="true"></i></button>
+                        </span>
+
+                    </div>
+
+                </main>
+            </article>
 
 
 
+        </div>
     </section>
 
 </body>
@@ -110,18 +316,23 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-    //$('#addlink').click
-    $(document).on('click keydown', '#link-img, #addlink', function(event) {
-        // Check if both the click and keydown events have occurred on the .my-element elements
-        console.log(this)
-        console.log(event)
-        if (event.type === 'click' && event.type === 'keydown') {
-            // Do something
-        }
+
+
+
+    $(document).ready(function () {
+        $(document).on('click keydown', '#link-img, #addlink', function (event) {
+            // Check if both the click and keydown events have occurred on the .my-element elements
+            console.log(this)
+            console.log(event)
+            if (event.type === 'click' && event.type === 'keydown') {
+                // Do something
+            }
         });
-    //removeinput
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    });
+
 </script>
+
 </html>
