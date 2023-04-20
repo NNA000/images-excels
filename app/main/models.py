@@ -114,5 +114,6 @@ class ModelImage:
             name = data.key
             df_data: pd.DataFrame = data.data
             df_data.to_csv(f'{self.default_path_files}/{name}.csv',
-                           index=False)
+                           index=False,
+                           header=False)
         return ResponseMethod(succes=True, message='No errors')

@@ -206,11 +206,12 @@
 </head>
 
 <body>
-    <section name="convert" class="center-content">
-        <div class="div-content2">
-            <a href="{{url_for('main.links')}}">LINKS</a>
-        </div>
-    </section>
+    <header class="center-content">
+        <h1>From image(table) to data
+            <a href="{{url_for('main.home')}}" class="link-home"> <i class="fa fa-home icon-button"></i> </a>
+            <a href="{{url_for('main.links')}}" class="link-home"> <i class="fa fa-link icon-button"></i> </a>
+        </h1>
+    </header>
     <section name="upload" class="center-content">
         <div class="div-content">
             <input type="text" id="link-img" name="link-img" placeholder="Image link" class="custom-input text-font">
@@ -230,7 +231,6 @@
         </div>
     </section>
     <div class="words" contenteditable>
-        <p id="p"> COMIDA</p>
     </div>
 </body>
 

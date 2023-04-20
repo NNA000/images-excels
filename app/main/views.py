@@ -12,15 +12,11 @@ main = Blueprint('main', __name__,
 
 @main.route('/obtencionimagenes')
 def home():
-    # https://dribbble.com/tags/image_upload
-    # https://dribbble.com/shots/15832392-File-Upload-DailyUI-031
     return render_template('main/upload_images.html')
 
 
 @main.route('/links')
 def links():
-    # https://dribbble.com/tags/image_upload
-    # https://dribbble.com/shots/15832392-File-Upload-DailyUI-031
     return render_template('main/links.html')
 
 
