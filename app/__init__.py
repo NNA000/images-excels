@@ -1,10 +1,8 @@
 from flask import Flask, render_template, redirect, url_for
 from flask_login import LoginManager
-# from .database import init_engine, init_db, db_session
 from .models import User
 
-# from .home.views import mod as main_blueprint
-# from .users.views import mod as user_blueprint
+
 from .main.views import main as main_app
 
 
@@ -18,7 +16,7 @@ def create_app(db_uri='any'):
     # app.config.from_pyfile(os.path.join(app.instance_path, 'config.py'))
 
     @app.route('/')
-    def principal():
+    def index():
         return redirect(url_for('main.home'))
 
     app.register_blueprint(main_app)
@@ -31,6 +29,20 @@ def create_app(db_uri='any'):
     def internal_error(exception):
         app.logger.exception(exception)
         return "Some Internal error has taken place."
+
+
+    @app.after_request
+    def add_security_headers(resp):
+        # resp.headers['Content-Security-Policy']="default-src 'self' style-src 'self' 'unsafe-inline'; img-src 'self' data:;"     #OLD
+        # resp.headers['Content-Security-Policy']="default-src https:; object-src 'none'"
+
+        # resp.headers['X-Content-Type-Options'] = 'nosniff' #Habilitar para servidor
+        # resp.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains';#OJO
+        # resp.headers['X-XSS-Protection'] = '1; mode=block'
+        #resp.headers['Content-Security-Policy']="frame-ancestors 'none';"
+        #resp.headers['X-Frame-Options'] = 'DENY'
+        resp.headers.add('Cache-Control', 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0')
+        return resp
 
     return app
 

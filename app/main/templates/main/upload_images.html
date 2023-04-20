@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset='utf-8'>
@@ -86,6 +86,10 @@
     </style>
 
     <style>
+        .image-section {
+            min-height: 300px;
+        }
+
         .div-content2 {
             border-radius: 1em;
             padding: 0.75rem;
@@ -97,6 +101,11 @@
             flex-wrap: wrap;
             justify-content: space-evenly;
             align-items: start;
+
+        }
+
+        .image-section .div-content2 {
+            min-height: 430px;
         }
 
         .images {
@@ -137,15 +146,16 @@
 
         .image-box .buttons-image {
             position: absolute;
-            top: 75%;
+            top: 25px;
             left: 50%;
             transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
             background-color: transparent;
-            font-size: 18px;
-            padding: 6px 12px;
+            font-size: 15px;
+            padding: 6px 1px;
             border: none;
             text-align: center;
+            justify-content: space-around;
         }
 
         .btn-image {
@@ -155,16 +165,52 @@
             border-color: rgb(7, 7, 7);
             cursor: pointer;
             color: white;
+            margin-left: 0.1rem;
+            margin-right: 0.1rem;
         }
 
         .btn-image:hover {
             background-color: black;
             transform: scale(1.2);
         }
+
+        .call-action {
+            border: 2px solid;
+            border-color: white;
+            border-radius: 5px;
+            padding: 0.5rem;
+            font-size: 20px;
+            background-color: black;
+            color: white;
+            font-family: 'Sono', sans-serif;
+        }
     </style>
+    <!-- Frame Breaking Script-->
+    <style id="antiClickjack">
+        body {
+            display: none !important;
+        }
+    </style>
+    <script type="text/javascript">
+
+        if (self === top) {
+            var antiClickjack = document.getElementById("antiClickjack");
+            antiClickjack.parentNode.removeChild(antiClickjack);
+        } else {
+            let body_content = document.getElementById('json-id')
+            body_content.innerHTML = ""
+            top.location = self.location;
+        }
+    </script>
+    <!-- End Frame Breaking Script -->
 </head>
 
 <body>
+    <section name="convert" class="center-content">
+        <div class="div-content2">
+            <a href="{{url_for('main.links')}}">LINKS</a>
+        </div>
+    </section>
     <section name="upload" class="center-content">
         <div class="div-content">
             <input type="text" id="link-img" name="link-img" placeholder="Image link" class="custom-input text-font">
@@ -174,141 +220,18 @@
                 data-html="true" title="<b>Add</b>"><i class="fa fa-plus-circle icon-button"></i></button>
         </div>
     </section>
-
-    <section name="resultado" class="center-content">
+    <section name="convert" class="center-content">
         <div class="div-content2">
-            <article class="element-container mt-1 ">
-                <header class="p-1">
-                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
-                </header>
-                <main class="image-container">
-                    <div class="image-box">
-                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458523388-0896218137-ScreenShot2016-03-21at6.51.45AM.png"
-                            alt="img-link" class="images">
-                        <span class="buttons-image">
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
-                                    aria-hidden="true"></i></button>
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
-                                    aria-hidden="true"></i></button>
-                        </span>
-
-                    </div>
-
-                </main>
-            </article>
-            <article class="element-container mt-1 ">
-                <header class="p-1">
-                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
-                </header>
-                <main class="image-container">
-                    <div class="image-box">
-                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458523388-0896218137-ScreenShot2016-03-21at6.51.45AM.png"
-                            alt="img-link" class="images">
-                        <span class="buttons-image">
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
-                                    aria-hidden="true"></i></button>
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
-                                    aria-hidden="true"></i></button>
-                        </span>
-
-                    </div>
-
-                </main>
-            </article>
-            <article class="element-container mt-1 ">
-                <header class="p-1">
-                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
-                </header>
-                <main class="image-container">
-                    <div class="image-box">
-                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458523388-0896218137-ScreenShot2016-03-21at6.51.45AM.png"
-                            alt="img-link" class="images">
-                        <span class="buttons-image">
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
-                                    aria-hidden="true"></i></button>
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
-                                    aria-hidden="true"></i></button>
-                        </span>
-
-                    </div>
-
-                </main>
-            </article>
-            <article class="element-container mt-1 ">
-                <header class="p-1">
-                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
-                </header>
-                <main class="image-container">
-                    <div class="image-box">
-                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458522826-a9ddd28469-ScreenShot2016-03-21at6.40.27AM.png"
-                            alt="img-link" class="images">
-                        <span class="buttons-image">
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
-                                    aria-hidden="true"></i></button>
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
-                                    aria-hidden="true"></i></button>
-                        </span>
-
-                    </div>
-
-                </main>
-            </article>
-            <article class="element-container mt-1 ">
-                <header class="p-1">
-                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
-                </header>
-                <main class="image-container">
-                    <div class="image-box">
-                        <img src="https://s3.amazonaws.com/hr-challenge-images/19503/1458523388-0896218137-ScreenShot2016-03-21at6.51.45AM.png"
-                            alt="img-link" class="images">
-                        <span class="buttons-image">
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
-                                    aria-hidden="true"></i></button>
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
-                                    aria-hidden="true"></i></button>
-                        </span>
-
-                    </div>
-
-                </main>
-            </article>
-            <article class="element-container mt-1 ">
-                <header class="p-1">
-                    <input type="text" name="image-loaded" placeholder="image link" class="custom-input text-font">
-                </header>
-                <main class="image-container">
-                    <div class="image-box">
-                        <img src="https://i.ytimg.com/vi/cpfdmtPWdj0/maxresdefault.jpg"
-                            alt="img-link" class="images">
-                        <span class="buttons-image">
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Discard</b>"><i class="fa fa-trash"
-                                    aria-hidden="true"></i></button>
-                            <button type="submit" class="btn-image" data-toggle="tooltip" data-placement="bottom"
-                                data-html="true" title="<b>Clipboard</b>"><i class="fa fa-copy "
-                                    aria-hidden="true"></i></button>
-                        </span>
-
-                    </div>
-
-                </main>
-            </article>
-
-
-
+            <input type="button" value="Convert to PDF" class="call-action" id="convert-data">
         </div>
     </section>
-
+    <section name="results" class="center-content image-section">
+        <div class="div-content2" id="images-container">
+        </div>
+    </section>
+    <div class="words" contenteditable>
+        <p id="p"> COMIDA</p>
+    </div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -317,22 +240,230 @@
 
 <script>
 
+    const id_input_url = 'link-img'
+    const id_add_button = 'addlink'
+    const id_remove_button = 'removeinput'
+    const id_images_container = 'images-container'
+    const class_image_delete = 'delete-img-loaded'
+    const id_convert_excel = 'convert-data'
+    function remove_text_oninput(id_input) {
+        let input_element = document.getElementById(id_input)
+        input_element.value = ""
+    }
+    function get_current_date() {
+        // Get current date in format dd-mm-yyyy
+        let current_date = new Date();
+        let day = current_date.getDate();
+        let month = current_date.getMonth() + 1; // Note: January is 0
+        let year = current_date.getFullYear();
+        let hours = ("0" + current_date.getHours()).slice(-2);
+        let minutes = ("0" + current_date.getMinutes()).slice(-2);
+        let seconds = ("0" + current_date.getSeconds()).slice(-2);
+        let milliseconds = ("00" + current_date.getMilliseconds()).slice(-3);
+        // Add leading zeros to the day and month if they are less than 10
+        if (day < 10) { day = "0" + day; }
+        if (month < 10) { month = "0" + month; }
+        let formattedDate = year + "-" + month + "-" + day + "_" + hours + "-" + minutes + "-" + seconds + "-" + milliseconds;
+        return formattedDate;
+    }
+    function hide_tooltip() {
+        $('[data-toggle="tooltip"]').tooltip('hide')
+        $('.tooltip').tooltip('hide');
+    }
+    function load_tooltips() {
+        $('[data-toggle="tooltip"]').tooltip({ delay: { "show": 500, "hide": 100 } })
+    }
+    function delete_image_loaded(element) {
+        let id_element = $(element).attr('delete-article')
+        $(`#${id_element}`).remove()
+        hide_tooltip()
+    }
+    function add_link_image(image_from = "link", url_link = "") {
+        // image_from : link, clipboard, upload
+        // generating  uniqueid for article
+        const id_article = 'idarticle-' + get_current_date()
+        const article = $('<article>')
+            .addClass('element-container mt-1')
+            .attr('id', id_article)
+            .attr('src-url', url_link)
+        /*Header*/
+        const article_header = $('<header>').addClass('p-1')
+        const art_header_input = $('<input >')
+            .addClass('custom-input text-font')
+            .attr('type', 'text')
+            .attr('name', 'image-loaded')
+            .attr('placeholder', 'image link')
+            .val(url_link)
+
+        art_header_input.appendTo(article_header)
+        article_header.appendTo(article)
+        /*Main: Image and action buttons*/
+        const article_main = $('<main>').addClass('image-container')
+        const div_img = $('<div>').addClass('image-box')
+        const image = $('<img>')
+            .attr('src', url_link)
+            .attr('alt', 'img-link')
+            .addClass('images')
+
+        const span_buttons = $('<span>').addClass('buttons-image')
+
+        const discard_btn = $('<button>')
+            .attr('type', "submit")
+            .addClass("btn-image delete-img-loaded")
+            .attr('data-toggle', "tooltip")
+            .attr('data-placement', "bottom")
+            .attr('data-html', "true")
+            .attr('title', "<b>Discard</b>")
+            .attr('onclick', "delete_image_loaded(this)")
+            .attr('delete-article', id_article)
+
+        const icon_discard = $('<i>').addClass('fa fa-trash').attr('aria-hidden', "true")
+
+        const copy_btn = $('<button>')
+            .attr('type', "submit")
+            .addClass("btn-image")
+            .attr('data-toggle', "tooltip")
+            .attr('data-placement', "bottom")
+            .attr('data-html', "true")
+            .attr('title', "<b>Clipboard</b>")
+        const icon_copy = $('<i>').addClass('fa fa-copy').attr('aria-hidden', "true")
+
+        const expand_btn = $('<button>')
+            .attr('type', "submit")
+            .addClass("btn-image")
+            .attr('data-toggle', "tooltip")
+            .attr('data-placement', "bottom")
+            .attr('data-html', "true")
+            .attr('title', "<b>Full windows</b>")
+        const icon_expand = $('<i>').addClass('fa fa-expand').attr('aria-hidden', "true")
+        icon_discard.appendTo(discard_btn)
+        icon_copy.appendTo(copy_btn)
+        icon_expand.appendTo(expand_btn)
+        // const div_img_span_btn = $('<main>').addClass('image-box')
+        // const div_img_span_btn = $('<main>').addClass('image-box')
+        discard_btn.appendTo(span_buttons)
+        copy_btn.appendTo(span_buttons)
+        expand_btn.appendTo(span_buttons)
+
+        image.appendTo(div_img)
+        span_buttons.appendTo(div_img)
+        div_img.appendTo(article_main)
+        article_main.appendTo(article)
+        /*Add element to images container*/
+        $(`#${id_images_container}`).append(article)
+        load_tooltips()
+        console.log(`Add image from: ${image_from}`)
+        console.log({ article })
+
+    }
+
+    function exist_image(url) {
+        return new Promise(resolve => {
+            var img = new Image()
+            img.addEventListener('load', () => resolve(true))
+            img.addEventListener('error', () => resolve(false))
+            img.src = url
+        })
+    }
+    function get_links_images() {
+        let imagenes = document.getElementById(id_images_container)
+        let links = []
+        for (const [index, element] of Object.entries(imagenes.children)) {
+            const url_imagen = $(element).attr('src-url')
+            links.push({name:index,
+                        url:url_imagen})
+        }
+        return links
+    }
+    function convert_images() {
+        //check if exist at least one element
+        let links = get_links_images()
+        console.log(links)
+        $.ajax({
+            url: "{{ url_for('main.convertir_images_excel') }}",
+            type: 'POST',
+            contentType: 'application/json', //Request
+            dataType: 'json', // Response
+            data: JSON.stringify(links),
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+
+    }
 
 
     $(document).ready(function () {
-        $(document).on('click keydown', '#link-img, #addlink', function (event) {
+        // Add new image
+        $(`#${id_input_url}, #${id_add_button}, #${id_remove_button}`).on('click keydown', function (event) {
             // Check if both the click and keydown events have occurred on the .my-element elements
-            console.log(this)
-            console.log(event)
-            if (event.type === 'click' && event.type === 'keydown') {
-                // Do something
+            let enter_over_input = (event.keyCode === 13 && $(this).attr('id') === id_input_url)
+            let click_over_add = $(this).attr('id') === id_add_button
+            let remove_link = $(this).attr('id') === id_remove_button
+            let link_image_oninput = document.getElementById(id_input_url).value
+
+            if ((enter_over_input || click_over_add) && link_image_oninput !== "") {
+                // Enter keydown
+                exist_image(link_image_oninput).then(
+                    function (success) {
+                        if (success) {
+                            add_link_image('link', link_image_oninput)
+                        } else {
+                            console.log("No image link")
+                        }
+                    }
+                )
             }
+            else if (remove_link) {
+                remove_text_oninput(id_input_url)
+                hide_tooltip()
+            }
+            else if (link_image_oninput === "") {
+                console.log('No link found')
+                hide_tooltip()
+            }
+
         });
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
+        // Discard image added
+        $(`#${id_convert_excel}`).click(function () {
+            convert_images()
         })
+        $(`.${class_image_delete}`).click(function () {
+            console.log()
+        })
+        // Load others
+        load_tooltips()
+
     });
 
+    /*
+// create a new instance of the SpeechRecognition API
+var speech = true;
+window.SpeechRecognition = window.SpeechRecognition
+            || window.webkitSpeechRecognition;
+
+const recognition = new SpeechRecognition();
+recognition.interimResults = true;
+const words = document.querySelector('.words');
+words.appendChild(p);
+
+recognition.addEventListener('result', e => {
+const transcript = Array.from(e.results)
+    .map(result => result[0])
+    .map(result => result.transcript)
+    .join('')
+
+document.getElementById("p").innerHTML = transcript;
+console.log(transcript);
+});
+
+if (speech) {
+recognition.start();
+recognition.addEventListener('end', recognition.start);
+}*/
 </script>
 
 </html>

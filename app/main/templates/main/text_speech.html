@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Text to Speech Example</title>
+  </head>
+  <body>
+    <input type="text" id="text-to-speak" placeholder="Enter text to speak">
+    <button id="speak-btn">Speak</button>
+
+    <script src="text-to-speech.js"></script>
+  </body>
+  <script>
+	const synth = window.speechSynthesis;
+
+	function speakText() {
+	const text = document.getElementById('text-to-speak').value;
+	const utterance = new SpeechSynthesisUtterance(text);
+		
+	// Set the voice to a UK English voice
+	const voices = synth.getVoices();
+	const ukVoice = voices.find(voice => voice.lang === 'en-GB');
+	utterance.voice = ukVoice;
+
+	synth.speak(utterance);
+	}
+
+	const speakButton = document.getElementById('speak-btn');
+	speakButton.addEventListener('click', speakText);
+  </script>
+</html>
