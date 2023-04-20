@@ -380,7 +380,7 @@
         let links = get_links_images()
         console.log(links)
         $.ajax({
-            url: "{{ url_for('main.convertir_images_excel') }}",
+            url: "{{ url_for('main.convert_image_excel') }}",
             type: 'POST',
             contentType: 'application/json', //Request
             dataType: 'json', // Response

@@ -1,5 +1,4 @@
 import requests
-import os
 from dataclasses import dataclass
 from PIL import Image as PILImage
 from io import BytesIO
@@ -10,19 +9,37 @@ from img2table.ocr import TesseractOCR
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import logging
+from typing import Optional
+import json
+import pathlib
+
+file_location = pathlib.Path(__file__).parent.resolve()
+
 
 @dataclass
 class ResponseMethod:
     succes: bool
-    content: list
+    content: Optional[list] = None
     message: str = 'No error'
+
+    def get_json_response(self):
+        return json.dumps({'succes': self.succes,
+                          'content': self.content,
+                           'message': self.message}, indent=4)
+
+
+@dataclass
+class DataDict:
+    key: str
+    data: object
 
 
 class Aditionals:
     @staticmethod
     def similarity_strings(str1: str, str2: str) -> float:
         "Calculate similarity between two strings using cosine_similarity"
-        # Create a CountVectorizer object to tokenize and count the words in the strings
+        # Create a CountVectorizer object to tokenize and count
+        # the words in the strings
         vectorizer = CountVectorizer().fit_transform([str1, str2])
         # Calculate the cosine similarity between the vectors
         similarity = cosine_similarity(vectorizer)
@@ -63,11 +80,11 @@ class UtilImage:
 
 class ModelImage:
     def __init__(self) -> None:
-        self.default_path_files = './files'
+        self.default_path_files = f'{file_location}/files'
         self.path_img = f'{self.default_path_files}/img'
         self.path_excel = f'{self.default_path_files}/excel'
 
-    def get_images(self, link_images: list[dict]) -> list:
+    def get_images(self, link_images: list[dict]) -> list[DataDict]:
         """
         Get images given url of images
            Input format of link images is: {name:index, url:url_imagen}
@@ -77,10 +94,25 @@ class ModelImage:
         for image in link_images:
             response = requests.get(image.get("url"))
             if response.status_code == 200:
-                images.append({'name':image.get('name'),
-                               'image': BytesIO(response.content)})
+                images.append(DataDict(key=image.get('name'),
+                                       data=BytesIO(response.content)))
             else:
-                logging.warning(f'Error getting image {response.status_code=} for {image.get("url")=}')
+                logging.warning((f'Error get img {response.status_code=}',
+                                f'for {image.get("url")=}'))
         return images
-    def get_data_images(self, images):
 
+    def get_data_images(self, images: list[DataDict]) -> list[dict]:
+        lista_imagenes = []
+        for image_data in images:
+            df_data = UtilImage.get_image_datatable(image_data.data)
+            lista_imagenes.append(DataDict(key=image_data.key,
+                                           data=df_data))
+        return lista_imagenes
+
+    def save_dfs_csv(self, list_data: list[DataDict]):
+        for data in list_data:
+            name = data.key
+            df_data: pd.DataFrame = data.data
+            df_data.to_csv(f'{self.default_path_files}/{name}.csv',
+                           index=False)
+        return ResponseMethod(succes=True, message='No errors')
