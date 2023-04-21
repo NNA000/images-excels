@@ -1,0 +1,15 @@
+.toast-dark {
+    background-color: #343a40;
+    color: #fff;
+    min-width: 300px;
+  }
+
+  .toast-dark .toast-header {
+    background-color: #23272b;
+    color: #fff;
+    border-bottom: 1px solid #1d2124;
+  }
+
+  .toast-dark .toast-body {
+    color: #fff;
+  }

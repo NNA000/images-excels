@@ -1,4 +1,5 @@
-# Test files 
+# Test and process files
+*files/
 *test/
 # Byte-compiled / optimized / DLL files
 __pycache__/

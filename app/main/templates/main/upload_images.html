@@ -4,10 +4,10 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Titulo</title>
+    <title>From TableImage to Data</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-
+    <link rel="icon" href="{{ url_for('main.static', filename='img/icon-image2table2.jpg') }}">
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/tooltip.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('main.static', filename='css/toast.css') }}">
 
     <style>
         body {
@@ -197,8 +198,6 @@
             var antiClickjack = document.getElementById("antiClickjack");
             antiClickjack.parentNode.removeChild(antiClickjack);
         } else {
-            let body_content = document.getElementById('json-id')
-            body_content.innerHTML = ""
             top.location = self.location;
         }
     </script>
@@ -206,9 +205,10 @@
 </head>
 
 <body>
+    {% include 'main/toast.html' %}
     <header class="center-content">
         <h1>From image(table) to data
-            <a href="{{url_for('main.home')}}" class="link-home"> <i class="fa fa-home icon-button"></i> </a>
+            <a href="{{url_for('main.upload_images')}}" class="link-home"> <i class="fa fa-home icon-button"></i> </a>
             <a href="{{url_for('main.links')}}" class="link-home"> <i class="fa fa-link icon-button"></i> </a>
         </h1>
     </header>
@@ -237,6 +237,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="{{ url_for('main.static', filename='js/toast.js') }}"></script>
 
 <script>
 
@@ -246,6 +247,8 @@
     const id_images_container = 'images-container'
     const class_image_delete = 'delete-img-loaded'
     const id_convert_excel = 'convert-data'
+    let toast_manager = new ToastManager('general-toast')
+
     function remove_text_oninput(id_input) {
         let input_element = document.getElementById(id_input)
         input_element.value = ""
@@ -385,8 +388,12 @@
             contentType: 'application/json', //Request
             dataType: 'json', // Response
             data: JSON.stringify(links),
+            beforeSend: function(){
+                toast_manager.show("We are processing your request.")
+            },
             success: function (data) {
                 console.log(data);
+                toast_manager.show("Data of images was saved in csv's.")
             },
             error: function (xhr, status, error) {
                 console.error(error);
@@ -412,7 +419,7 @@
                         if (success) {
                             add_link_image('link', link_image_oninput)
                         } else {
-                            console.log("No image link")
+                            toast_manager.show('Image doenst exist.')
                         }
                     }
                 )

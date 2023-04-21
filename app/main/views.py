@@ -10,8 +10,8 @@ main = Blueprint('main', __name__,
                  static_folder='static')
 
 
-@main.route('/obtencionimagenes')
-def home():
+@main.route('/upload_images')
+def upload_images():
     return render_template('main/upload_images.html')
 
 

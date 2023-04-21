@@ -13,7 +13,6 @@ if "%1" neq "" (
     ) else if "%1" equ "urf" (
         echo "Updating requirement file..."
         REM Just for update requirements file
-        call pip freeze > requirement.txt
         pip freeze | findstr /v "certifi" > requirements.txt
     ) else (
         if "%1" equ "run" (
