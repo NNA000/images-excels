@@ -238,6 +238,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="{{ url_for('main.static', filename='js/toast.js') }}"></script>
+<script src="{{ url_for('static', filename='js/utils_general.js') }}"></script>
+
 
 <script>
 
@@ -248,7 +250,7 @@
     const class_image_delete = 'delete-img-loaded'
     const id_convert_excel = 'convert-data'
     let toast_manager = new ToastManager('general-toast')
-
+    let clipboard_manager = new ClipboardUtils()
     function remove_text_oninput(id_input) {
         let input_element = document.getElementById(id_input)
         input_element.value = ""
@@ -280,6 +282,12 @@
         let id_element = $(element).attr('delete-article')
         $(`#${id_element}`).remove()
         hide_tooltip()
+    }
+    function copy_link_image(element) {
+        let url = $(element).attr('url-image')
+        hide_tooltip()
+        ClipboardUtils.copyTextToClipboard(url)
+        toast_manager.show("Copied!")
     }
     function add_link_image(image_from = "link", url_link = "") {
         // image_from : link, clipboard, upload
@@ -324,11 +332,13 @@
 
         const copy_btn = $('<button>')
             .attr('type', "submit")
-            .addClass("btn-image")
+            .addClass("btn-image copy-link")
             .attr('data-toggle', "tooltip")
             .attr('data-placement', "bottom")
             .attr('data-html', "true")
-            .attr('title', "<b>Clipboard</b>")
+            .attr('title', "<b>Clipboard link</b>")
+            .attr('onclick', "copy_link_image(this)")
+            .attr('url-image', url_link)
         const icon_copy = $('<i>').addClass('fa fa-copy').attr('aria-hidden', "true")
 
         const expand_btn = $('<button>')
@@ -397,6 +407,7 @@
             },
             error: function (xhr, status, error) {
                 console.error(error);
+                toast_manager.show("Error with processing")
             }
         });
 

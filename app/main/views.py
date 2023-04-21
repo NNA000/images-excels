@@ -2,7 +2,7 @@
 """
 
 from flask import Blueprint, render_template, request, jsonify
-from .models import UtilImage, ModelImage, ResponseMethod
+from .models import ModelImage, ResponseMethod
 
 main = Blueprint('main', __name__,
                  url_prefix='/main',

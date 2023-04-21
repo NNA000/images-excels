@@ -1,5 +1,5 @@
 class ToastManager {
-    constructor(toastid='general-toast', config={ autohide: true, delay: 1400}) {
+    constructor(toastid='general-toast', config={ autohide: true, delay: 1500}) {
       // Initialize the toast element
       this.$toast = $(`#${toastid}`).toast(config);
     }

@@ -27,3 +27,19 @@ class ElementManager {
         this.content_text.textContent = "0"
     }
 }
+
+class ClipboardUtils {
+    static copyTextToClipboard(text) {
+        // Create a temporary input element to hold the text
+        const input = document.createElement('input');
+        input.setAttribute('value', text);
+        document.body.appendChild(input);
+
+        // Select the text in the input element and copy it to the clipboard
+        input.select();
+        document.execCommand('copy');
+
+        // Remove the temporary input element
+        document.body.removeChild(input);
+    }
+}

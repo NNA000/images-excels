@@ -1,6 +1,6 @@
 # Test and process files
-*files/
-*test/
+**/files/**
+**/test/**
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
